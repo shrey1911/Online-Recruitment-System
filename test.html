@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <link rel="stylesheet" href="./test.css">
+</head>
+<body>
+    <div class="container">
+        <div class="filter-section">
+            <label for="locationFilter">Filter by Location:</label>
+            <select id="locationFilter">
+                <option value="all">All Locations</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Pune">Pune</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bengaluru">Bengaluru</option>
+            </select>
+        </div>
+
+        <div id="jobCards" class="job-cards">
+            <!-- Job Cards -->
+            <div class="job-card" data-location="Ahmedabad">
+                <h3>Fullstack Developer</h3>
+                <p>Location: Ahmedabad</p>
+                <button>Apply Now</button>
+            </div>
+            <div class="job-card" data-location="Pune">
+                <h3>Software Engineer</h3>
+                <p>Location: Pune</p>
+                <button>Apply Now</button>
+            </div>
+            <div class="job-card" data-location="Mumbai">
+                <h3>Network Engineer</h3>
+                <p>Location: Mumbai</p>
+                <button>Apply Now</button>
+            </div>
+            <div class="job-card" data-location="Bengaluru">
+                <h3>Database Engineer</h3>
+                <p>Location: Bengaluru</p>
+                <button>Apply Now</button>
+            </div>
+            <div class="job-card" data-location="Ahmedabad">
+                <h3>Software Engineer</h3>
+                <p>Location: Ahmedabad</p>
+                <button>Apply Now</button>
+            </div>
+            <div class="job-card" data-location="Pune">
+                <h3>Database Engineer</h3>
+                <p>Location: Pune</p>
+                <button>Apply Now</button>
+            </div>
+            <div class="job-card" data-location="Mumbai">
+                <h3>Fullstack Developer</h3>
+                <p>Location: Mumbai</p>
+                <button>Apply Now</button>
+            </div>
+            <div class="job-card" data-location="Bengaluru">
+                <h3>Network Engineer</h3>
+                <p>Location: Bengaluru</p>
+                <button>Apply Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('locationFilter').addEventListener('change', function () {
+            const selectedLocation = this.value;
+            const jobCards = document.querySelectorAll('.job-card');
+
+            jobCards.forEach(card => {
+                if (selectedLocation === 'all' || card.getAttribute('data-location') === selectedLocation) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

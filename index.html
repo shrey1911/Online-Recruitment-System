@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Recruitment System - Home</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <div class="index_header">
+            <div class="logo-container">
+                <img src="./skill-scape-high-resolution-logo-white-transparent.png" alt="Company Logo" class="logo" width="180px">
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="#contact-us" class="nav-link">Contact Us</a></li> 
+                    <li><a href="./about.html" class="nav-link">About Us</a></li> 
+                    <li><a href="login.php" class="nav-link">Login</a></li>
+                    <li><a href="signup.php" class="nav-link">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    </header>
+
+    <section id="hero-section">
+        <div class="container_hero">
+            <h1 style="font-size: 50px;">Welcome to the Skills Scape !!!</h1>
+            <br>
+            <h3>Your career starts here. Find your dream job or the best talent.</h3>
+            <br><br><br>
+            <a href="./signup.php" class="btn btn-primary">Get Started</a>
+        </div>
+    </section>
+
+ 
+
+    <section id="features-section">
+        <div class="container">
+            <h2>Why Choose Us?</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>For Job Seekers</h3>
+                    <p>Explore a wide range of job opportunities across various industries and levels.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>For Employers</h3>
+                    <p>Find the best candidates through our easy-to-use platform with smart matching algorithms.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Secure & Reliable</h3>
+                    <p>We ensure your data is secure and your job searches or listings are reliable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Us Section -->
+    <section id="contact-us" class="contact-us">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need further information, feel free to contact us. Fill in the form below and we'll get back to you as soon as possible.</p>
+        <form action="contact-submit.html" method="post" class="contact-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer id="main-footer">
+        <div class="container">
+            <p>&copy; 2024 Online Recruitment System. All rights reserved.</p>
+            <nav class="footer-nav">
+                <ul class="nav-list">
+                    <li><a href="terms.html" class="nav-link">Terms & Conditions</a></li>
+                    <li><a href="privacy.html" class="nav-link">Privacy Policy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+    
+ 
+        
+    
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Recruitment System - Home</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="container">
+            <div class="index_header">
+                <div class="logo-container">
+                    <img src="./skill-scape-high-resolution-logo-white-transparent.png" alt="Company Logo" class="logo"
+                        width="180px">
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="#contact-us" class="nav-link">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero-section">
+        <div class="container_hero">
+            <h1 style="font-size: 50px;">Welcome to the Skills Scape !!!</h1>
+            <br>
+            <h3>Your career starts here. Find your dream job or the best talent.</h3>
+            <br><br><br>
+            <a href="#job-search-section" class="btn btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <section id="job-search-section">
+        <div class="container">
+            <h2>Find Jobs</h2>
+            <form action="search-results.html" method="get" class="search-form">
+                <input type="text" class="input-field" placeholder="Job Title, Keywords, or Company" name="keywords">
+                <input type="text" class="input-field" placeholder="Location" name="location">
+                <button type="submit" class="btn btn-secondary">Search</button>
+            </form>
+            <!-- Job Results Section -->
+            <div id="jobs-container" class="jobs-container"></div>
+        </div>
+    </section>
+
+    <footer id="main-footer">
+        <div class="container">
+            <p>&copy; 2024 Online Recruitment System. All rights reserved.</p>
+            <nav class="footer-nav">
+                <ul class="nav-list">
+                    <li><a href="terms.html" class="nav-link">Terms & Conditions</a></li>
+                    <li><a href="privacy.html" class="nav-link">Privacy Policy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Add other sections and footer here -->
+
+    <script>
+        const jobs = [
+            { title: "Fullstack Developer", company: "Tech Solutions", location: "Ahmedabad" },
+            { title: "Software Engineer", company: "InnovateX", location: "Pune" },
+            { title: "Network Engineer", company: "NetSecure", location: "Mumbai" },
+            { title: "Database Engineer", company: "DataCore", location: "Bengaluru" },
+            { title: "Data Analyst", company: "Insight Corp", location: "Hyderabad" },
+            { title: "Frontend Developer", company: "Creative Minds", location: "Bengaluru" },
+            { title: "Backend Developer", company: "CodeCrafters", location: "Chennai" },
+            { title: "Mobile App Developer", company: "Appify", location: "Mumbai" },
+            { title: "DevOps Engineer", company: "CloudStream", location: "Noida" },
+            { title: "Cybersecurity Specialist", company: "SecureNet", location: "Pune" },
+            { title: "UI/UX Designer", company: "PixelPioneers", location: "Bengaluru" },
+            { title: "AI/ML Engineer", company: "SmartTech AI", location: "Hyderabad" },
+            { title: "Cloud Engineer", company: "Nimbus Solutions", location: "Ahmedabad" },
+            { title: "Technical Support Engineer", company: "TechAssist", location: "Gurugram" },
+            { title: "Project Manager", company: "Innovate Solutions", location: "Delhi" },
+            { title: "Systems Administrator", company: "NetTech", location: "Kolkata" },
+            { title: "QA Engineer", company: "Testify", location: "Mumbai" },
+            { title: "Data Scientist", company: "DataGen", location: "Bengaluru" },
+            { title: "Blockchain Developer", company: "ChainTech", location: "Pune" },
+            { title: "Business Analyst", company: "MarketVibe", location: "Delhi" },
+            { title: "Software Architect", company: "CoreCode", location: "Chennai" },
+            { title: "Fullstack Developer", company: "NextGen Solutions", location: "Gurugram" },
+            { title: "Digital Marketing Specialist", company: "AdVantage", location: "Kolkata" },
+            { title: "Network Engineer", company: "LinkSecure", location: "Hyderabad" }
+
+        ];
+
+        function displayJobs(filteredJobs) {
+            const jobsContainer = document.getElementById("jobs-container");
+            jobsContainer.innerHTML = "";
+
+            if (filteredJobs.length === 0) {
+                jobsContainer.innerHTML = "<p>No jobs found for the given criteria.</p>";
+            } else {
+                filteredJobs.forEach(job => {
+                    const jobCard = `
+                    <div class="job-card">
+                        <h3>${job.title}</h3>
+                        <p>Company: ${job.company}</p>
+                        <p>Location: ${job.location}</p>
+                        <button class="btn btn-apply" onclick="applyForJob('${job.title}', '${job.company}', '${job.location}')">Apply Now</button>
+                    </div>
+                `;
+                    jobsContainer.innerHTML += jobCard;
+                });
+            }
+        }
+
+        function applyForJob(title, company, location) {
+            alert(`You are applying for ${title} at ${company} in ${location}`);
+        }
+
+        document.querySelector(".search-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const keyword = document.querySelector('input[name="keywords"]').value.toLowerCase();
+            const location = document.querySelector('input[name="location"]').value.toLowerCase();
+
+            const filteredJobs = jobs.filter(job => {
+                const jobTitleMatch = job.title.toLowerCase().includes(keyword);
+                const jobLocationMatch = location ? job.location.toLowerCase().includes(location) : true;
+                return jobTitleMatch && jobLocationMatch;
+            });
+
+            if (!keyword && !location) {
+                displayJobs(jobs); // Show all jobs if no search criteria
+            } else {
+                displayJobs(filteredJobs);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

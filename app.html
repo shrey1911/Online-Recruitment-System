@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Jobs API</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>GitHub Jobs API Example</h1>
+    
+    <div id="jobs"></div>
+    <script src="script.js"></script>
+    <script>
+        // Function to fetch jobs using Axios
+        async function fetchJobs(description = '', location = '', full_time = false) {
+            try {
+                const response = await axios.get('https://jobs.github.com/positions.json', {
+                    params: {
+                        description: description,
+                        location: location,
+                        full_time: full_time
+                    }
+                });
+
+                // Process and display the jobs
+                const jobs = response.data;
+                const jobsContainer = document.getElementById('jobs');
+                jobs.forEach(job => {
+                    const jobElement = document.createElement('div');
+                    jobElement.innerHTML = `
+                        <h3>${job.title}</h3>
+                        <p><strong>Company:</strong> ${job.company}</p>
+                        <p><strong>Location:</strong> ${job.location}</p>
+                        <p><strong>Description:</strong> ${job.description.substring(0, 150)}...</p>
+                        <a href="${job.url}" target="_blank">View Job</a>
+                        <hr>
+                    `;
+                    jobsContainer.appendChild(jobElement);
+                });
+
+            } catch (error) {
+                console.error('Error fetching data from GitHub Jobs API:', error);
+            }
+        }
+
+        // Fetch JavaScript jobs in New York as an example
+        fetchJobs('javascript', 'New York', true);
+    </script>
+</body>
+</html>
